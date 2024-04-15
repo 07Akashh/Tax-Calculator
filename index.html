@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator</title>
+    <link rel="stylesheet" href="./index.css" />
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+</head>
+
+<body>
+
+    <form onsubmit="incomeAfterTax(event)" id="myForm">
+        <div>
+            <div class='label'>
+                <p>Enter Gross Anual Income</p>
+                <i class="fa fa-question-circle" id='fieldInfoToolTip'
+                    data-tooltip ='Gross Anual income is your total salary before deduction'></i>
+            </div>
+            <div class='inputWrapper'>
+                <input placeholder="Enter Gross Anual Income" name="annualIncome"
+                    oninput="onChangeHandler('annualIncomeErrorIcon')" />
+                <i class="fa fa-exclamation-circle errorIcon" id="annualIncomeErrorIcon"
+                    data-tooltip='Please enter numbers only'></i>
+            </div>
+        </div>
+        <div>
+
+            <div class='label'>
+                <p>Enter Extra Income</p>
+                <i 
+                    class="fa fa-question-circle"
+                    id='fieldInfoToolTip'
+                    data-tooltip='Extra income refers to supplementary earnings beyond primary source
+                '></i>
+            </div>
+
+            <div class='inputWrapper'>
+                <input
+                    placeholder="Enter Extra Income" name="grossIncome"
+                    oninput="onChangeHandler('grossIncomeErrorIcon')"
+                />
+                <i
+                    class="fa fa-exclamation-circle errorIcon" 
+                    id="grossIncomeErrorIcon"
+                    data-tooltip='Please enter numbers only'
+                ></i>
+            </div>
+
+        </div>
+        <div>
+
+            <div class='label'>
+                <p>Enter Age Group</p>
+                <i class="fa fa-question-circle" id='fieldInfoToolTip' data-tooltip="Select your age please"></i>
+            </div>
+            <div class='inputWrapper'>
+                <select name="age" oninput="onChangeHandler('ageErrorIcon')">
+                    <option selected disabled>Select Age</option>
+                    <option value="age < 40">age < 40</option>
+                    <option value="age ≥ 40 but < 60">age ≥ 40 but < 60</option>
+                    <option age ≥ 60>age ≥ 60</option>
+                </select>
+                <i class="fa fa-exclamation-circle errorIcon" id="ageErrorIcon"
+                    data-tooltip='Age selection is mandetory'></i>
+            </div>
+        </div>
+        <div>
+            <div class='label'>
+                <p>Enter Total Applicable Deduction</p>
+                <i class="fa fa-question-circle" id='fieldInfoToolTip' data-tooltip="Amounts subtracted from gross income to determine taxable income"
+                ></i>
+            </div>
+            <div class='inputWrapper'>
+                <input placeholder="Enter Total Applicable Deduction" name="deduction"
+                    oninput="onChangeHandler('deductionErrorIcon')" />
+                <i class="fa fa-exclamation-circle errorIcon " id="deductionErrorIcon"
+                    data-tooltip='Please enter numbers only'></i>
+            </div>
+        </div>
+        <button class='submitBtn'>Submit</button>
+    </form>
+    <div id="result" class="alertBox">
+        <h4>Your Overall Income will be</h4>
+        <h4 id="resultText">
+        </h4>
+        <p id="deductionStatus">
+        </p>
+        <button class="closeBtn" onclick="handleClose()">Close</button>
+    </div>
+</body>
+
+</html>
